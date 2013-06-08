@@ -8,6 +8,14 @@ rand = function(num) {
 	return Math.floor(Math.random() * num);
 }
 
+// add drow circle method to surface
+Surface.prototype.drawCircle = function(x, y, r) {
+        this.context.beginPath();
+        this.context.strokeStyle = "blue";  // test
+        this.context.arc(x, y, r, 0, Math.PI * 2, true);
+        this.context.stroke();
+};
+
 // inheritance Sprite class
 Plane = Class.create(Sprite, {
 	initialize:function(x, y) {
@@ -45,11 +53,29 @@ ScoreLabel = Class.create(Label, {
 	}
 });
 
+// DrowRing class define
+// inheritance Sprite class
+DrowRing = Class.create(Sprite, {
+        initialize:function(x, y) {
+                // call Sprite class constractor
+                enchant.Sprite.call(this, 50, 50);
+                this.surface = new Surface(50, 50);
+                // ring color is red
+                this.surface.drawCircle(25, 25, 10);
+                this.image = this.surface;
+                this.x = x;
+                this.y = y;
+                this.frame = 0;
+        }
+});
+
 // initialize
 window.onload = function() {
 	game = new Game(WIDTH, HEIGHT);
 	// load image droid
 	game.preload('chara1.gif', 'background.jpg');
+    game.tick = 0;
+    game.fps = 16;
 	game.onload = function() {
 		// create background
 		var bg = new Sprite(WIDTH, HEIGHT);
@@ -61,6 +87,9 @@ window.onload = function() {
 		// create plane
 		var plane = new Plane( WIDTH/2, HEIGHT/2 );
 		game.rootScene.addChild(plane);
+        // create ring
+        var ring = new DrowRing( 100, 100 );
+        game.rootScene.addChild(ring);
 	}
 	
 	game.start();
