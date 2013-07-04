@@ -113,11 +113,26 @@ window.onload = function() {
 		};
 
 		game.rootScene.addEventListener('touchstart', 
-			function(e) { plane.x = e.x - 16; plane.y = e.y - 16; });
+			function(e) {
+				if(getLength(e.x, e.y, plane.x, plane.y) < 35) {				   
+					plane.x = e.x - 16; 
+					plane.y = e.y - 16; 
+				}
+			});
 		game.rootScene.addEventListener('touchend',
-			function(e) { plane.x = e.x - 16; plane.y = e.y - 16; });
+			function(e) {
+				if(getLength(e.x, e.y, plane.x, plane.y) < 35) {
+					plane.x = e.x - 16;
+					plane.y = e.y - 16;
+				}
+			});
 		game.rootScene.addEventListener('touchmove', 
-			function(e) { plane.x = e.x - 16; plane.y = e.y- 16; });
+			function(e) {
+				if(getLength(e.x, e.y, plane.x, plane.y) < 35) { 
+					plane.x = e.x - 16;
+					plane.y = e.y - 16;
+				}
+			});
 
 		game.rootScene.addEventListener(Event.ENTER_FRAME, function() {
 			// create ring
