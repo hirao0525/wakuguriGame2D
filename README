@@ -1,1 +1,6 @@
-github test 
+簡易的な輪くぐりゲームです
+持ってきてるものはすべてフリー素材です
+途中で http://js2coffee.org/ でJavaScript→CoffeeScirptへの変換を試しましたが、微妙だったのでこのプロジェクトはJavaScriptで進めます
+CoffeeScriptを試すのはまた今度ということで
+
+現在の問題点：プログラムの構成に問題ありかも？ 要検証
